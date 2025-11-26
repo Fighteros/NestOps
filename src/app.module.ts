@@ -12,6 +12,7 @@ import { RequestContextModule } from './core/context/request-context.module';
 import { ResponseInterceptor } from './core/interceptors/response/response.interceptor';
 import { ValidationPipe } from './core/pipes/validation.pipe';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { DocsModule } from './docs/docs.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     ConfigModule,
     LoggerModule,
     RequestContextModule,
+    DocsModule,
   ],
   providers: [
     {
