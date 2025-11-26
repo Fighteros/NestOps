@@ -13,6 +13,8 @@ import { ResponseInterceptor } from './core/interceptors/response/response.inter
 import { ValidationPipe } from './core/pipes/validation.pipe';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { DocsModule } from './docs/docs.module';
+import { DatabaseModule } from './modules/database/database.module';
+import { UploadsModule } from './modules/uploads/uploads.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { DocsModule } from './docs/docs.module';
     LoggerModule,
     RequestContextModule,
     DocsModule,
+    DatabaseModule,
+    UploadsModule,
   ],
   providers: [
     {
