@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import appConfig, { appValidationSchema } from './configs/app.config';
+import databaseConfig, {
+  databaseValidationSchema,
+} from './configs/database.config';
 
 @Module({
   imports: [
@@ -8,8 +11,8 @@ import appConfig, { appValidationSchema } from './configs/app.config';
       isGlobal: true,
       cache: true,
       expandVariables: true,
-      load: [appConfig],
-      validationSchema: appValidationSchema,
+      load: [appConfig, databaseConfig],
+      validationSchema: appValidationSchema.concat(databaseValidationSchema),
     }),
   ],
 })

@@ -24,7 +24,7 @@ async function bootstrap() {
 
   app.use(helmet());
 
-  const safeCompression = compression.default() as unknown as RequestHandler;
+  const safeCompression = compression() as unknown as RequestHandler;
   app.use(safeCompression);
 
   // ── CORS
@@ -52,9 +52,9 @@ async function bootstrap() {
     defaultVersion: '1',
   });
 
-  // ── API prefix
-  const globalPrefix = config.get<string>('API_PREFIX') ?? 'api';
-  app.setGlobalPrefix(globalPrefix);
+  // // ── API prefix
+  // const globalPrefix = config.get<string>('API_PREFIX') ?? 'api';
+  // app.setGlobalPrefix(globalPrefix);
 
   /* Setup Swagger */
   DocsModule.setup(app);

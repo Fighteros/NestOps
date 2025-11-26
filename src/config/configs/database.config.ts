@@ -1,4 +1,5 @@
 import * as Joi from 'joi';
+import { join } from 'path';
 
 export default () => ({
   database: {
@@ -13,7 +14,10 @@ export default () => ({
       process.env.NODE_ENV === 'production'
         ? { rejectUnauthorized: false }
         : false,
-    entities: [__dirname + '/modules/**/domain/entities/*.entity{.ts,.js}'],
+    entities: [
+      join(__dirname + '/modules/**/domain/entities/*.entity{.ts,.js}'),
+      join(__dirname, 'common/entities/*.entity{.ts,.js}'),
+    ],
     migrations: [
       __dirname + '/modules/**/domain/migrations/*.migration{.ts,.js}',
     ],

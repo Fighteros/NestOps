@@ -1,4 +1,4 @@
-import { Module, OnModuleInit, Logger } from '@nestjs/common';
+import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
@@ -38,11 +38,17 @@ import { SnakeNamingStrategy } from './strategies/snake-naming.strategy';
 export class DatabaseModule implements OnModuleInit {
   private readonly logger = new Logger(DatabaseModule.name);
 
-  constructor(private readonly dataSource: DataSource) {}
+  constructor(
+    private readonly dataSource: DataSource,
+    private readonly configService: ConfigService,
+  ) {}
 
   onModuleInit() {
     if (this.dataSource.isInitialized) {
       this.logger.log('Database connected successfully');
+      this.logger.log(
+        ` Connected to db ${this.configService.get('database.host')}:${this.configService.get('database.port')}/${this.configService.get('database.database')}`,
+      );
     }
   }
 }
