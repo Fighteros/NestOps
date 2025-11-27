@@ -20,6 +20,7 @@ import { SnakeNamingStrategy } from './strategies/snake-naming.strategy';
         logging: configService.get<boolean>('database.logging'),
         ssl: configService.get<any>('database.ssl'),
         entities: configService.get<string[]>('database.entities'),
+        autoLoadEntities: true,
         migrations: configService.get<string[]>('database.migrations'),
         subscribers: configService.get<string[]>('database.subscribers'),
         namingStrategy: new SnakeNamingStrategy(),

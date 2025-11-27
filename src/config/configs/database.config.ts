@@ -16,14 +16,17 @@ export default registerAs('database', () => ({
       ? { rejectUnauthorized: false }
       : false,
   entities: [
-    join(__dirname + '/modules/**/domain/entities/*.entity{.ts,.js}'),
-    join(__dirname, 'common/entities/*.entity{.ts,.js}'),
+    join(__dirname, '../../modules/**/domain/entities/*.entity{.ts,.js}'),
+    join(__dirname, '../../common/entities/*.entity{.ts,.js}'),
   ],
   migrations: [
-    __dirname + '/modules/**/domain/migrations/*.migration{.ts,.js}',
+    join(__dirname, '../../modules/**/domain/migrations/*.migration{.ts,.js}'),
   ],
   subscribers: [
-    __dirname + '/modules/**/domain/subscribers/*.subscriber{.ts,.js}',
+    join(
+      __dirname,
+      '../../modules/**/domain/subscribers/*.subscriber{.ts,.js}',
+    ),
   ],
 }));
 
