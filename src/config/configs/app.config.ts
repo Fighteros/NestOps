@@ -1,13 +1,13 @@
 import * as Joi from 'joi';
 
-export default () => ({
-  app: {
-    name: process.env.APP_NAME,
-    env: process.env.NODE_ENV ?? 'development',
-    port: parseInt(process.env.PORT ?? '8000', 10),
-    cors: process.env.CORS_ORIGINS,
-  },
-});
+import { registerAs } from '@nestjs/config';
+
+export default registerAs('app', () => ({
+  name: process.env.APP_NAME,
+  env: process.env.NODE_ENV ?? 'development',
+  port: parseInt(process.env.PORT ?? '8000', 10),
+  cors: process.env.CORS_ORIGINS,
+}));
 
 export const appValidationSchema = Joi.object({
   APP_NAME: Joi.string().required(),
