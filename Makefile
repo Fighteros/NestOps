@@ -1,3 +1,6 @@
+create-backend:
+	npm run create-backend
+
 install:
 	npm install
 

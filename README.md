@@ -1,105 +1,159 @@
-# Presigned URLs Service
+# Create Backend
 
-A NestJS-based service for managing file uploads using presigned URLs.
+A powerful CLI tool to automatically generate production-ready NestJS backend applications with enterprise-grade configuration, best practices, and essential tools pre-configured. Similar to `nest new` or `create-react-app`, but with a complete, battle-tested setup out of the box.
 
-## Description
+## 🚀 Quick Start
 
-This project provides a backend service for handling file uploads securely. It uses NestJS as the framework and supports database interactions, logging, and configuration management.
-
-## Prerequisites
-
-Before running the application, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (v22 or later recommended)
-- [Docker](https://www.docker.com/) (for running the database)
-- [npm](https://www.npmjs.com/)
-
-## Installation
-
-1.  Clone the repository:
-
-    ```bash
-    git clone <repository-url>
-    cd presigned-urls
-    ```
-
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-
-## Configuration
-
-1.  Copy the example environment file to `.env`:
-
-    ```bash
-    cp .env.example .env
-    ```
-
-2.  Update the `.env` file with your specific configuration values. See `.env.example` for the required variables.
-
-    **Environment Variables:**
-    - **Application:**
-      - `APP_NAME`: Name of the application (default: `presigned-urls`)
-      - `NODE_ENV`: Environment (development, production, etc.)
-      - `PORT`: Port to run the application on (default: `8000`)
-      - `CORS_ORIGINS`: Allowed CORS origins
-
-    - **Database:**
-      - `DATABASE_HOST`: Database host
-      - `DATABASE_PORT`: Database port
-      - `DATABASE_USERNAME`: Database username
-      - `DATABASE_PASSWORD`: Database password
-      - `DATABASE_NAME`: Database name
-
-    - **Secrets:**
-      - `UPLOAD_SECRET`: Secret key for upload operations
-
-## Running the Application
-
-### Development
-
-To start the application in development mode with watch mode enabled:
+### Using npx (Recommended - No Installation Required)
 
 ```bash
-npm run start:dev
+npx create-backend my-app
 ```
 
-### Production
-
-To build and start the application in production mode:
+Or using npm create:
 
 ```bash
-npm run build
-npm run start:prod
+npm create backend my-app
 ```
 
-## Testing
-
-To run the test suite:
+### Global Installation
 
 ```bash
-# Unit tests
-npm run test
-
-# E2E tests
-npm run test:e2e
-
-# Test coverage
-npm run test:cov
+npm install -g create-backend
+create-backend my-app
 ```
 
-## Project Structure
+### From Git Repository
 
-The project follows a modular structure:
+If you want to use it directly from a git repository without publishing:
 
-- `src/`: Source code
-  - `common/`: Shared utilities, filters, interceptors, and logger
-  - `config/`: Configuration files and validation schemas
-  - `core/`: Core application logic
-  - `modules/`: Feature modules (e.g., `uploads`, `database`)
-  - `main.ts`: Application entry point
+```bash
+npx github:fighteros/NestOps my-app
+```
+
+Or clone and use:
+
+```bash
+git clone https://github.com/fighteros/NestOps.git
+cd NestOps
+npm run create-backend my-app
+```
+
+## ✨ What Gets Auto-Generated
+
+This tool automatically creates a **production-ready NestJS backend** with enterprise-grade features pre-configured. No manual setup required!
+
+### 📁 Complete Project Structure
+
+- **`src/common/`** - Shared utilities, DTOs, entities, interfaces, and logger module
+- **`src/config/`** - Configuration management with validation schemas (Joi)
+- **`src/core/`** - Core application logic:
+  - Global exception filters
+  - Request/Response interceptors (logging, request ID, header validation)
+  - Validation pipes
+  - Request context management
+- **`src/modules/`** - Feature modules (database module pre-configured)
+- **`src/docs/`** - Swagger/OpenAPI documentation setup
+- **`src/i18n/`** - Internationalization support
+- **`test/`** - E2E test configuration
+
+### 🛠️ Pre-Configured Features
+
+**Core Framework:**
+- ✅ NestJS with Express
+- ✅ TypeScript with strict mode
+- ✅ ESLint + Prettier for code quality
+
+**Database & ORM:**
+- ✅ TypeORM with PostgreSQL/MySQL support
+- ✅ Snake case naming strategy
+- ✅ Auto-load entities
+- ✅ Connection pooling configured
+
+**Logging:**
+- ✅ Winston logger with daily rotation
+- ✅ Separate error and combined log files
+- ✅ Console output with colorized formatting
+- ✅ Automatic log archiving (30 days retention)
+
+**API Features:**
+- ✅ Swagger/OpenAPI documentation (auto-generated)
+- ✅ API versioning (URI-based: `/v1/...`)
+- ✅ Request ID tracking
+- ✅ Response interceptors
+- ✅ Request logging
+
+**Security & Performance:**
+- ✅ Helmet for security headers
+- ✅ CORS configuration
+- ✅ Rate limiting (Throttler)
+- ✅ Request compression
+- ✅ Global exception handling
+- ✅ Input validation (class-validator)
+
+**Developer Experience:**
+- ✅ Environment-based configuration
+- ✅ i18n support
+- ✅ Graceful shutdown hooks
+- ✅ Docker & Docker Compose setup
+- ✅ E2E testing framework (Jest + Supertest)
+
+For detailed information about all features, see [DOCUMENTATION.md](./DOCUMENTATION.md).
+
+## Getting Started After Creation
+
+1. **Navigate to your new app:**
+   ```bash
+   cd my-app
+   ```
+
+2. **Set up environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+3. **Start development:**
+   ```bash
+   npm run start:dev
+   ```
+
+4. **Access your API:**
+   - API: http://localhost:9000
+   - Swagger Docs: http://localhost:9000/api/docs
+
+## Available Scripts
+
+- `npm run build` - Build the application
+- `npm run start:dev` - Start in development mode with watch
+- `npm run start:prod` - Start in production mode
+- `npm run test` - Run unit tests
+- `npm run test:e2e` - Run E2E tests
+- `npm run lint` - Lint the code
+- `npm run format` - Format code with Prettier
+
+## 📚 Documentation
+
+- **[DOCUMENTATION.md](./DOCUMENTATION.md)** - Comprehensive guide about the tool and all auto-configured features
+- **[INSTALL.md](./INSTALL.md)** - Detailed installation and usage instructions
+- **[USAGE.md](./USAGE.md)** - Usage guide for different scenarios
+
+## 🔧 Publishing to npm (Optional)
+
+If you want to publish this as an npm package:
+
+1. Update the `repository` field in `package.json` with your git URL
+2. Update the `name` field to your desired package name (must be unique on npm)
+3. Login to npm: `npm login`
+4. Publish: `npm publish`
+
+Then users can install it globally or use via npx.
+
+## Requirements
+
+- Node.js >= 22.0.0
+- npm >= 10.0.0
 
 ## License
 
-[UNLICENSED](LICENSE)
+[MIT](LICENSE) - Copyright (c) 2024 Ahmed Abd ElGhany

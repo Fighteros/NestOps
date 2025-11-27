@@ -15,7 +15,6 @@ import { ResponseInterceptor } from './core/interceptors/response/response.inter
 import { ValidationPipe } from './core/pipes/validation.pipe';
 import { DocsModule } from './docs/docs.module';
 import { DatabaseModule } from './modules/database/database.module';
-import { UploadsModule } from './modules/uploads/uploads.module';
 
 @Module({
   imports: [
@@ -47,7 +46,6 @@ import { UploadsModule } from './modules/uploads/uploads.module';
     RequestContextModule,
     DocsModule,
     DatabaseModule,
-    UploadsModule,
   ],
   providers: [
     {
